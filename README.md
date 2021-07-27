@@ -1,2 +1,2 @@
 # Cygnus-Dadabase-Server
-A sample database.
+A simple database.
