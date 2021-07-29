@@ -1,2 +1,2 @@
-# Cygnus-Dadabase-Server
+# Cygnus-Database-Server
 A simple database.
