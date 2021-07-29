@@ -1,17 +1,17 @@
 #include<iostream>
-#include<fstream>
 #include<cstdio>
 #include<string>
-#include<basic_table.h>
+#include"table.hpp"
+
+#ifndef DEBUG
+#pragma once
+#endif
 
 class adder{
 private:
-	string path,name;
-	ifstream fin("");
-	ofstream fout("");
+	std::string path,name;
 public:
-	adder(string p,string n):path(p),name(n){
-		fin=ifstream(p);
+	adder(std::string p,std::string n):path(p),name(n){
 		//todo add data to the table
 	}
 };
