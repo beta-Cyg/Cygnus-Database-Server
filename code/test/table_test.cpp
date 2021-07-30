@@ -12,10 +12,11 @@ struct node{
 table test;
 
 int main(){
-	test.insert_row("test_row");
+	test.create_row("test_row");
+	//test.insert_row("test_row","test_r2");
 	test.push_back("test_row",node(520,13.14));
 	for(int i=0;i<31;i++)test.push_back("test_row",node(i,i*0.5));
-	for(auto i:test["test_row"])cout<<any_cast<node>(i).a<<endl;
+	for(auto i:test["test_row"])cout<<any_cast<node>(i).a<<' '<<any_cast<node>(i).b<<endl;
 
 	return 0;
 }
