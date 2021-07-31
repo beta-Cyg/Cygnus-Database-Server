@@ -13,7 +13,7 @@ int main(int argc,char** args){
 	}
 	path=args[2];
 	name=args[1];
-	cout<<"Cygnus-Database-Server "<<version<<endl;
+	cout<<"Cygnus-Database-Server "<<CDS_VERSION<<endl;
 	while(true){
 		cout<<"\ncygnus-db("+name+")>> ";
 		cin>>type;
@@ -22,6 +22,7 @@ int main(int argc,char** args){
 			cin>>table_name;
 			system(("touch "+path+name+"/"+table_name+".db").c_str());
 		}
+		else if(type=="version")cout<<CDS_VERSION;
 		else if(type=="exit")break;
 		else cout<<"syntax error";
 	}
