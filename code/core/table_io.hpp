@@ -1,17 +1,21 @@
-#include<fstream>
+#include<cstdlib>
+#include<sstream>
 #include"table.hpp"
 
 namespace cyg{
-	void print(const std::string& path){}
+	void print(const std::string& path,bool type,table::const_iterator _begin,table::const_iterator _end){}
 
 	template<typename hT,typename...ArgsT>
-	void print(const std::string& path,table::const_iterator begin,table::const_iterator end){
-		//table::iterator iter=begin;
-		//iter++;
-		std::ofstream fout(path.c_str());
-		if(begin!=end)
-			for(auto i:*begin)
-				fout<<std::any_cast<hT>(i)<<' ';
-		print<ArgsT...>(path,begin++,end);
+	void print(const std::string& path,bool type,table::const_iterator _begin,table::const_iterator _end,hT harg,ArgsT...Args){
+		std::stringstream buf;
+		if(_begin!=_end){
+			auto iter=_begin->begin();
+			buf<<std::any_cast<std::string>(*(iter++))<<' ';
+			for(;iter!=_begin->end();iter++)
+				buf<<std::any_cast<hT>(*iter)<<' ';
+		}
+		if(type)std::system(("echo \""+buf.str()+"\" > "+path).c_str());
+		else std::system(("echo \""+buf.str()+"\" >> "+path).c_str());
+		print(path,type,_begin++,_end,Args...);
 	}
 }

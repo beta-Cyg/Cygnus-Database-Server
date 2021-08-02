@@ -27,7 +27,7 @@ namespace cyg{
 		}
 	};
 
-	static bad_table_activity rne_err("The row is not exist!");
+	bad_table_activity rne_err("The row is not exist!");
 
 	class table{
 	public:
