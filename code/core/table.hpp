@@ -89,23 +89,23 @@ namespace cyg{
 		}
 
 		std::any& front(std::string row){
-			if(basic_index.count(row))basic_index.at(row)->at(1);
-			else throw rne_err;
+			if(basic_index.count(row))return basic_index.at(row)->at(1);
+			throw rne_err;
 		}
 
 		const std::any& front(std::string row)const{
-			if(basic_index.count(row))basic_index.at(row)->at(1);
-			else throw rne_err;
+			if(basic_index.count(row))return basic_index.at(row)->at(1);
+			throw rne_err;
 		}
 
 		const std::any& back(std::string row){
-			if(basic_index.count(row))basic_index.at(row)->back();
-			else throw rne_err;
+			if(basic_index.count(row))return basic_index.at(row)->back();
+			throw rne_err;
 		}
 
 		std::any& back(std::string row)const{
-			if(basic_index.count(row))basic_index.at(row)->back();
-			else throw rne_err;
+			if(basic_index.count(row))return basic_index.at(row)->back();
+			throw rne_err;
 		}
 
 		void push_back(std::string row,const std::any& value){
