@@ -1,9 +1,5 @@
-#ifndef BASIC_TABLE_H
-#define BASIC_TABLE_H
-
-#ifndef DEBUG
-#pragma once
-#endif
+#ifndef TABLE_HPP
+#define TABLE_HPP
 
 #include<unordered_map>
 #include<exception>

@@ -6,7 +6,7 @@ namespace cyg{
 	void print(const std::string& path,bool type,table::const_iterator _begin,table::const_iterator _end){}
 
 	template<typename hT,typename...ArgsT>
-	void print(const std::string& path,bool type,table::const_iterator _begin,table::const_iterator _end,hT harg,ArgsT...Args){
+	void print(const std::string& path,table::const_iterator _begin,table::const_iterator _end,hT harg,ArgsT...Args){
 		std::stringstream buf;
 		if(_begin!=_end){
 			auto iter=_begin->begin();
@@ -14,8 +14,7 @@ namespace cyg{
 			for(;iter!=_begin->end();iter++)
 				buf<<std::any_cast<hT>(*iter)<<' ';
 		}
-		if(type)std::system(("echo \""+buf.str()+"\" > "+path).c_str());
-		else std::system(("echo \""+buf.str()+"\" >> "+path).c_str());
-		print(path,type,_begin++,_end,Args...);
+		std::system(("echo "+buf.str()+" >> "+path).c_str());
+		print(path,type,++_begin,_end,Args...);
 	}
 }
