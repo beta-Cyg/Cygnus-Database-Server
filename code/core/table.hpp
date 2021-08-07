@@ -55,6 +55,14 @@ namespace cyg{
 			return basic_table.end();
 		}
 
+		const size_type& size()const noexcept{
+			return row_size;
+		}
+
+		bool empty()const noexcept{
+			return row_size==0;
+		}
+
 		void push_front_row(std::string index){
 			basic_table.push_front(std::vector<std::any>());
 			basic_index[index]=basic_table.begin();
@@ -72,6 +80,22 @@ namespace cyg{
 			basic_index[index]=basic_table.insert(basic_index[position],std::vector<std::any>());
 			basic_index.at(index)->push_back(index);
 			row_size++;
+		}
+
+		void insert_row(const_iterator position,std::string index){
+			basic_index[index]=basic_table.insert(position,std::vector<std::any>());
+			basic_index.at(index)->push_back(index);
+			row_size++;
+		}
+
+		void erase_row(std::string position){
+			if(basic_index.count(position))basic_table.erase(basic_index[position]),row_size--;
+			else throw rne_err;
+		}
+
+		void erase_row(const_iterator position){
+			basic_table.erase(position);
+			row_size--;
 		}
 
 		std::vector<std::any>& operator[](std::string index){
@@ -131,6 +155,11 @@ namespace cyg{
 
 		void insert(std::string row,std::vector<std::any>::const_iterator position,std::any&& value){
 			if(basic_index.count(row))basic_index.at(row)->insert(position,value);
+			else throw rne_err;
+		}
+
+		void erase(std::string row,std::vector<std::any>::const_iterator position){
+			if(basic_index.count(row))basic_index.at(row)->erase(position);
 			else throw rne_err;
 		}
 	};

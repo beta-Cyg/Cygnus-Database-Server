@@ -1,3 +1,6 @@
+#ifndef TABLE_IO_HPP
+#define TABLE_IO_HPP
+
 #include<cstdlib>
 #include<sstream>
 #include"table.hpp"
@@ -18,3 +21,5 @@ namespace cyg{
 		print(path,type,++_begin,_end,Args...);
 	}
 }
+
+#endif
