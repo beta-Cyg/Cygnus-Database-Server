@@ -20,7 +20,7 @@ int main(int argc,char** args){
 		if(type=="add--table"){
 			string table_name;
 			cin>>table_name;
-			system(("touch "+path+name+"/"+table_name+".db").c_str());
+			system(("touch "+path+name+"/"+table_name+".cygdb").c_str());
 		}
 		else if(type=="version")cout<<CDS_VERSION;
 		else if(type=="exit")break;

@@ -7,10 +7,10 @@
 #include"table.hpp"
 
 namespace cyg{
+	void output(const std::string& path,table::const_iterator _begin,table::const_iterator _end){}
+
 	template<typename hT,typename...ArgsT>
-	void output(const std::string& path,table::const_iterator _begin,table::const_iterator _end){
-		std::cout<<typeid(hT).name()<<std::endl;
-		if(typeid(hT).hash_code()==typeid(void*).hash_code())return;
+	void output(const std::string& path,table::const_iterator _begin,table::const_iterator _end,hT hArg,ArgsT...Args){
 		std::stringstream buf;
 		if(_begin!=_end){
 			auto iter=_begin->begin();
@@ -18,11 +18,13 @@ namespace cyg{
 			for(;iter!=_begin->end();iter++)
 				buf<<std::any_cast<hT>(*iter)<<' ';
 		}
+		table::const_iterator i=_begin;
+		++i;
 		std::system(("echo "+buf.str()+" >> "+path).c_str());
-		output<ArgsT...>(path,++_begin,_end);
+		output(path,i,_end,Args...);
 	}
 
-	void input();
+	void input(){}
 }
 
 #endif

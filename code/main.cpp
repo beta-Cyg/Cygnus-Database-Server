@@ -29,7 +29,7 @@ int main(int argc,char** args){
 		Args.emplace_back(args[i]);
 	switch(argc){
 	case 1:
-		cout<<"two few args\n";
+		cout<<"Too few args\n";
 		break;
 	case 2:
 		if(Args[1]=="--init"){

@@ -1,1 +1,0 @@
-rm cds cygnus-db
