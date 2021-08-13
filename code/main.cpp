@@ -1,5 +1,6 @@
 #include<algorithm>
 #include<iostream>
+#include<fstream>
 #include<cstdio>
 #include<cstdlib>
 #include<string>
@@ -8,20 +9,44 @@ using namespace std;
 
 vector<string>Args;
 
-void init_db(){
-	string name,passwd,path;
-	cout<<"Please type the path of the database"
-		"(use '/' to part the directory): ";
+void get_flag(bool& _f){
+	ifstream fin("log/flag.log");
+	fin>>_f;
+	fin.close();
+}
+
+string init_db(){
+	string path;
+	cout<<"Please type the path of databases"
+		"(use '/' to part the directory):";
 	cin>>path;
-	reverse(path.begin(),path.end());
-	name=path.substr(0,path.find("/"));
-	reverse(name.begin(),name.end());
-	reverse(path.begin(),path.end());
+	system((
+		"mkdir "+path
+	       ).c_str());
+	system((
+		"echo "+path+" > log/path.log"
+	       ).c_str());
+	system(
+		"echo 1 > log/flag.log"
+		);
+	return path;
+}
+
+void create_db(){
+	bool flag;
+	string path;
+	ifstream fin("log/path.log");
+	get_flag(flag);
+	if(not flag)
+		path=init_db();
+	else fin>>path;
+	string name,passwd;
+	cout<<"Please type the name of the database: ";
+	cin>>name;
 	cout<<"Please type the passwd of the database: ";
 	cin>>passwd;
-	system(("mkdir "+path).c_str());
 	system(("echo "+passwd+" >> "+path+"/.passwdlists").c_str());
-	system(("touch "+path+"/database.db").c_str());
+	system(("touch "+path+"/"+name).c_str());
 }
 
 int main(int argc,char** args){
@@ -34,6 +59,12 @@ int main(int argc,char** args){
 	case 2:
 		if(Args[1]=="--init"){
 			init_db();
+		}
+		else if(Args[1]=="--create"){
+			create_db();
+		}
+		else{
+			system(("cygnus-db "+Args[1]).c_str());
 		}
 	}
 
