@@ -4,7 +4,7 @@
 #include<cstdlib>
 #include<sstream>
 #include<iostream>
-#include"table.hpp"
+#include"table.cpp"
 
 namespace cyg{
 	void output(const std::string& path,table::const_iterator _begin,table::const_iterator _end){}

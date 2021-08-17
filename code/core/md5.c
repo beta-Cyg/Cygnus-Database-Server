@@ -417,7 +417,7 @@ void move(int step, int *temp1, int *temp2) {
 }
 
 /*每一大轮的16小轮循环函数*/
-void round(int *a, int *b, int *c, int *d, int *m, int *md5, int r, char *t1,
+void _round(int *a, int *b, int *c, int *d, int *m, int *md5, int r, char *t1,
            char *t2, char *t3, char *t4, char *t5, char *t6, char *t7, char *t8, char *t9,
            char *t10, char *t11, char *t12, char *t13, char *t14, char *t15, char *t16) {
     int i, j, in, step, temp1[32], temp2[32];
@@ -750,10 +750,10 @@ int main(int argc, char **args) {
  * 																printf("\n");*/
 
     /* 第一、二、三、四大轮，每一大轮下有16小轮 */
-    round(a, b, c, d, m1, md5, 1, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14, t15, t16);
-    round(a, b, c, d, m2, md5, 2, t17, t18, t19, t20, t21, t22, t23, t24, t25, t26, t27, t28, t29, t30, t31, t32);
-    round(a, b, c, d, m3, md5, 3, t33, t34, t35, t36, t37, t38, t39, t40, t41, t42, t43, t44, t45, t46, t47, t48);
-    round(a, b, c, d, m4, md5, 4, t49, t50, t51, t52, t53, t54, t55, t56, t57, t58, t59, t60, t61, t62, t63, t64);
+    _round(a, b, c, d, m1, md5, 1, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14, t15, t16);
+    _round(a, b, c, d, m2, md5, 2, t17, t18, t19, t20, t21, t22, t23, t24, t25, t26, t27, t28, t29, t30, t31, t32);
+    _round(a, b, c, d, m3, md5, 3, t33, t34, t35, t36, t37, t38, t39, t40, t41, t42, t43, t44, t45, t46, t47, t48);
+    _round(a, b, c, d, m4, md5, 4, t49, t50, t51, t52, t53, t54, t55, t56, t57, t58, t59, t60, t61, t62, t63, t64);
     printf("\n");
     /* 最终的a、b、c、d分别与最初的a、b、c、d相加 */
     jia(a, a1, a);
