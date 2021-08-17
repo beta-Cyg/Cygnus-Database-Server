@@ -1,4 +1,4 @@
-#include"code/core/table_io.hpp"
+#include"core/table_io.hpp"
 #include<iostream>
 using namespace std;
 using namespace cyg;

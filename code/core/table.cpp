@@ -1,18 +1,15 @@
-#ifndef TABLE_HPP
-#define TABLE_HPP
-
 #include"table.h"
 
 namespace cyg{
     bad_table_activity::bad_table_activity()=default;
 
-	bad_table_activity::bad_table_activity(std::string&& why):reason(why){}
+    bad_table_activity::bad_table_activity(std::string&& why):reason(why){}
 
-	const char* bad_table_activity::what(){
-		return reason.c_str();
-	}
+    const char* bad_table_activity::what(){
+        return reason.c_str();
+    }
 
-	bad_table_activity rne_err("The row is not exist!");
+    bad_table_activity rne_err("The row is not exist!");
 
     table::table():basic_index(),basic_table(),row_size(0){}
 
@@ -142,5 +139,3 @@ namespace cyg{
         else throw rne_err;
     }
 }
-
-#endif
