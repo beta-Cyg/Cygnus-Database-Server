@@ -5,64 +5,63 @@
 #include<cstdlib>
 #include<string>
 #include<vector>
+#include<boost/json.hpp>
 using namespace std;
 
 vector<string>Args;
 
-void test(unsigned int& a){}
-
 void get_flag(bool& _f){
-	ifstream fin("log/flag.log");
-	fin>>_f;
-	fin.close();
+//	ifstream fin("log/flag.json");
+//	fin>>_f;
+//	fin.close();
 }
 
 string init_db(){
-	string path;
-	cout<<"Please type the path of databases"
-		"(use '/' to part the directory):";
-	cin>>path;
-	system((
-		"mkdir "+path
-	       ).c_str());
-	system((
-		"echo "+path+" > log/path.log"
-	       ).c_str());
-	system(
-		"echo 1 > log/flag.log"
-		);
-	return path;
+//	string path;
+//	cout<<"Please type the path of databases"
+//		"(use '/' to part the directory):";
+//	cin>>path;
+//	system((
+//		"mkdir "+path
+//	       ).c_str());
+//	system((
+//		"echo "+path+" > log/path.json"
+//	       ).c_str());
+//	system(
+//		"echo 1 > log/flag.json"
+//		);
+//	return path;
 }
 
 void create_db(){
-	bool flag;
-	string path;
-	ifstream fin("log/path.log");
-	get_flag(flag);
-	if(not flag)
-		path=init_db();
-	else fin>>path;
-	string name,passwd;
-	cout<<"Please type the name of the database: ";
-	cin>>name;
-	cout<<"Please type the passwd of the database: ";
-	cin>>passwd;
-	system(("./bin/encrypt.c "+passwd+" "+path+"/.passwdlists").c_str());
-	system(("touch "+path+"/"+name).c_str());
+//	bool flag;
+//	string path;
+//	ifstream fin("log/path.json");
+//	get_flag(flag);
+//	if(not flag)
+//		path=init_db();
+//	else fin>>path;
+//	string name,passwd;
+//	cout<<"Please type the name of the database: ";
+//	cin>>name;
+//	cout<<"Please type the passwd of the database: ";
+//	cin>>passwd;
+//	system(("./bin/encrypt.c "+passwd+" "+path+"/.passwdlists").c_str());
+//	system(("touch "+path+"/"+name).c_str());
 }
 
 void add_user(){
-    string passwd;
-    bool flag;
-    string path;
-    ifstream fin("log/path.log");
-    get_flag(flag);
-    if(not flag)
-        path=init_db();
-    else fin>>path;
-    cout<<"Please type the passwd of the user: ";
-    cin>>passwd;
-    system(("./bin/encrypt "+passwd+" "+path+"/.passwdlists").c_str());
+//    string passwd;
+//    bool flag;
+//    string path;
+//    ifstream fin("log/path.json");
+//    get_flag(flag);
+//    if(not flag)
+//        path=init_db();
+//    else fin>>path;
+//    cout<<"Please type the passwd of the user: ";
+//    cin>>passwd;
+//    system(("./bin/encrypt "+passwd+" "+path+"/.passwdlists").c_str());
 }
 
 int main(int argc,char** args){
