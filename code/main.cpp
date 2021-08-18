@@ -9,6 +9,8 @@ using namespace std;
 
 vector<string>Args;
 
+void test(unsigned int& a){}
+
 void get_flag(bool& _f){
 	ifstream fin("log/flag.log");
 	fin>>_f;
@@ -45,8 +47,22 @@ void create_db(){
 	cin>>name;
 	cout<<"Please type the passwd of the database: ";
 	cin>>passwd;
-	system(("echo "+passwd+" >> "+path+"/.passwdlists").c_str());
+	system(("./bin/encrypt.c "+passwd+" "+path+"/.passwdlists").c_str());
 	system(("touch "+path+"/"+name).c_str());
+}
+
+void add_user(){
+    string passwd;
+    bool flag;
+    string path;
+    ifstream fin("log/path.log");
+    get_flag(flag);
+    if(not flag)
+        path=init_db();
+    else fin>>path;
+    cout<<"Please type the passwd of the user: ";
+    cin>>passwd;
+    system(("./bin/encrypt "+passwd+" "+path+"/.passwdlists").c_str());
 }
 
 int main(int argc,char** args){
@@ -63,9 +79,15 @@ int main(int argc,char** args){
 		else if(Args[1]=="--create"){
 			create_db();
 		}
+		else if(Args[1]=="--adduser"){
+		    add_user();
+		}
 		else{
 			system(("cygnus-db "+Args[1]).c_str());
 		}
+		break;
+	default:
+	    break;
 	}
 
 	return 0;

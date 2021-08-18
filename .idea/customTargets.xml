@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CLionExternalBuildManager">
+    <target id="8e306be0-e6ad-470f-aead-7aace70aabcd" name="STD" defaultType="MAKE">
+      <configuration id="f2275d13-7ab8-4bab-870a-75dac060cf67" name="STD" toolchainName="MinGW">
+        <build type="MAKE">
+          <make targetName="all" />
+        </build>
+        <clean type="MAKE">
+          <make targetName="clean" />
+        </clean>
+      </configuration>
+    </target>
+  </component>
+</project>
