@@ -11,12 +11,9 @@ using namespace std;
 vector<string>Args;
 
 void get_flag(bool& _f){
-	string json_str;
-	ifstream fin("log/flag.json");
-	fin>>json_str;
-	fin.close();
-	auto json_val=boost::json::parse(json_str.c_str());
-	//todo
+//	ifstream fin("log/flag.json");
+//	fin>>_f;
+//	fin.close();
 }
 
 string init_db(){
@@ -30,9 +27,9 @@ string init_db(){
 //	system((
 //		"echo "+path+" > log/path.json"
 //	       ).c_str());
-	system(
-		"echo \"{\\\"flag\\\": 1}\" > log/flag.json"
-		);
+//	system(
+//		"echo 1 > log/flag.json"
+//		);
 //	return path;
 }
 
