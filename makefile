@@ -5,7 +5,7 @@ link_table=-ltable
 link_md5=-lmd5
 find_code=-I $(PATH_CDS)/code/
 
-all: clean table cds cygnus-db encrypt iot
+all: table cds cygnus-db encrypt iot
 
 table: $(PATH_CDS)/code/core/table.cpp
 	g++ -c $(PATH_CDS)/code/core/table.cpp -o $(PATH_CDS)/lib/libtable.o -std=c++17
@@ -24,6 +24,6 @@ encrypt: $(PATH_CDS)/code/encrypt.c md5
 	gcc $(PATH_CDS)/code/encrypt.c -o bin/encrypt $(add_lib) $(link_md5) -std=c11
 
 clean:
-	rm -f bin/*.exe
-	rm -f lib/*.o
-	rm -f lib/*.a
+	rm -rf *.exe
+	rm -rf *.o
+	rm -rf *.a
