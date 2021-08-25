@@ -23,7 +23,8 @@ iot: table $(PATH_CDS)/code/test/io_test.cpp
 encrypt: $(PATH_CDS)/code/encrypt.c md5
 	gcc $(PATH_CDS)/code/encrypt.c -o bin/encrypt $(add_lib) $(link_md5) -std=c11
 
+init:
+	mkdir lib bin
+
 clean:
-	rm -rf *.exe
-	rm -rf *.o
-	rm -rf *.a
+	rm -f bin/* lib/*

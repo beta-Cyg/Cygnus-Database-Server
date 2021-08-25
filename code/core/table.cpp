@@ -31,6 +31,38 @@ namespace cyg{
         return basic_table.end();
     }
 
+    table::const_iterator table::cbegin()const noexcept{
+	    return basic_table.cbegin();
+    }
+
+    table::const_iterator table::cend()const noexcept{
+	    return basic_table.cend();
+    }
+
+    table::reverse_iterator table::rbegin()noexcept{
+	    return basic_table.rbegin();
+    }
+
+    table::const_reverse_iterator table::rbegin()const noexcept{
+	    return basic_table.rbegin();
+    }
+
+    table::const_reverse_iterator table::crbegin()const noexcept{
+	    return basic_table.crbegin();
+    }
+
+    table::reverse_iterator table::rend()noexcept{
+	    return basic_table.rend();
+    }
+
+    table::const_reverse_iterator table::rend()const noexcept{
+	    return basic_table.rend();
+    }
+
+    table::const_reverse_iterator table::crend()const noexcept{
+	    return basic_table.crend();
+    }
+
     const table::size_type& table::size()const noexcept{
         return row_size;
     }

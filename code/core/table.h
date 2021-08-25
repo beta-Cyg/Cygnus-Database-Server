@@ -10,7 +10,7 @@
 #include<any>
 
 namespace cyg{
-    class bad_table_activity:std::exception{
+    class bad_table_activity:public std::exception{
     private:
         std::string reason;
     public:
@@ -28,6 +28,8 @@ namespace cyg{
         typedef unsigned long long size_type;
         typedef std::list<std::vector<std::any>>::iterator iterator;
         typedef std::list<std::vector<std::any>>::const_iterator const_iterator;
+	typedef std::list<std::vector<std::any>>::reverse_iterator reverse_iterator;
+	typedef std::list<std::vector<std::any>>::const_reverse_iterator const_reverse_iterator;
     private:
         std::unordered_map<std::string,iterator>basic_index;
         std::list<std::vector<std::any>>basic_table;
@@ -44,6 +46,22 @@ namespace cyg{
         iterator end()noexcept;
 
         const_iterator end()const noexcept;
+
+	const_iterator cbegin()const noexcept;
+
+	const_iterator cend()const noexcept;
+
+	reverse_iterator rbegin()noexcept;
+
+	const_reverse_iterator rbegin()const noexcept;
+
+	reverse_iterator rend()noexcept;
+
+	const_reverse_iterator rend()const noexcept;
+
+	const_reverse_iterator crbegin()const noexcept;
+
+	const_reverse_iterator crend()const noexcept;
 
         const size_type& size()const noexcept;
 
