@@ -95,7 +95,7 @@ int main(int argc,char** args){
 		    add_user();
 		}
 		else{
-			system(("cygnus-db "+Args[1]).c_str());
+			cout<<"Undefined parameter\n";
 		}
 		break;
 	default:

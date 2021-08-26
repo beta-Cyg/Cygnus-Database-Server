@@ -24,7 +24,7 @@ encrypt: $(PATH_CDS)/code/encrypt.c md5
 	gcc $(PATH_CDS)/code/encrypt.c -o bin/encrypt $(add_lib) $(link_md5) -std=c11
 
 init:
-	mkdir lib bin
+	echo 'export PATH=$(PATH):$(PATH_CDS)' >> ~/.bashrc
 
 clean:
 	rm -f bin/* lib/*
