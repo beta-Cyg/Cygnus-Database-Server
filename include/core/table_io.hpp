@@ -4,6 +4,7 @@
 #include<cstdlib>
 #include<sstream>
 #include<iostream>
+#include<fstream>
 #include"table.cpp"
 
 namespace cyg{
@@ -20,7 +21,11 @@ namespace cyg{
 		}
 		table::const_iterator i=_begin;
 		++i;
-		std::system(("echo "+buf.str()+" >> "+path).c_str());
+		std::fstream out(path,std::ios::app);
+		//std::cout<<"buf: "<<buf.str()<<std::endl;
+		out<<buf.str()<<std::endl;
+		out.close();
+		//std::system(("echo "+buf.str()+" >> "+path).c_str());
 		output(path,i,_end,Args...);
 	}
 
