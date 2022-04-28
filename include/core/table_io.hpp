@@ -8,26 +8,24 @@
 #include"table.cpp"
 
 namespace cyg{
-	void output(const std::string& path,table::const_iterator _begin,table::const_iterator _end){}
-
-	template<typename hT,typename...ArgsT>
-	void output(const std::string& path,table::const_iterator _begin,table::const_iterator _end,hT hArg,ArgsT...Args){
+	void output(const std::string& path,table::const_iterator _begin,table::const_iterator _end){
 		std::stringstream buf;
-		if(_begin!=_end){
+		for(;_begin!=_end;_begin++){
 			auto iter=_begin->begin();
-			buf<<std::any_cast<std::string>(*(iter++))<<' ';
+			buf<<*(iter++)<<' ';
 			for(;iter!=_begin->end();iter++)
-				buf<<std::any_cast<hT>(*iter)<<' ';
+				buf<<*iter<<' ';
+            buf<<std::endl;
 		}
-		table::const_iterator i=_begin;
-		++i;
 		std::fstream out(path,std::ios::app);
-		//std::cout<<"buf: "<<buf.str()<<std::endl;
-		out<<buf.str()<<std::endl;
+		out<<buf.str();
 		out.close();
-		//std::system(("echo "+buf.str()+" >> "+path).c_str());
-		output(path,i,_end,Args...);
 	}
+
+    void reset(const std::string& path){
+        std::fstream out(path,std::ios::trunc|std::ios::out);
+        out.close();
+    }
 
 	void input(){}
 }
