@@ -27,7 +27,11 @@ namespace cyg{
         out.close();
     }
 
-	void input(){}
+	void input(const std::string& path){
+        std::fstream in(path,std::ios::in);
+
+        in.close();
+    }
 }
 
 #endif
